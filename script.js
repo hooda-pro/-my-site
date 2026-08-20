@@ -13,8 +13,8 @@
     var frag = document.createDocumentFragment();
     nameStr.split('').forEach(function(ch, i){
       var span = document.createElement('span');
-      span.textContent = ch === ' ' ? '\u00A0' : ch;
-      span.style.animationDelay = (i * 0.035) + 's';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      span.style.animationDelay = (i * 0.032) + 's';
       frag.appendChild(span);
     });
     lettersHost.appendChild(frag);
@@ -31,7 +31,7 @@
       setTimeout(function(){
         dots.classList.add('hide');
         taglineText.classList.add('show');
-      }, 1300);
+      }, 1200);
     }
   }
 
@@ -45,7 +45,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.10, rootMargin: '0px 0px -50px 0px' });
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('visible'); });
@@ -86,7 +86,7 @@
           });
         }
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
+    }, { rootMargin: '-42% 0px -50% 0px' });
     sections.forEach(function(s){ spy.observe(s); });
   }
 
@@ -94,7 +94,7 @@
   var toTop = document.getElementById('toTop');
   if (toTop) {
     window.addEventListener('scroll', function(){
-      toTop.classList.toggle('show', window.scrollY > 480);
+      toTop.classList.toggle('show', window.scrollY > 420);
     }, { passive: true });
     toTop.addEventListener('click', function(){
       window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
